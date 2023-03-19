@@ -7,10 +7,10 @@
                 <div class="card-body p-4">
                     <div class="row mb-4">
                         <div class="col-6">
-                            <h5 class="card-title fw-semibold">Manage User</h5>
+                            <h5 class="card-title fw-semibold">Report Barang Keluar</h5>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="{{ route('manage-user.create') }}" class="btn btn-success ">create</a>
+                            <a href="" class="btn btn-success ">Print</a>
                         </div>
                     </div>
                     <div>
@@ -18,27 +18,53 @@
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">No</h6>
+                                        <h6 class="fw-semibold mb-0">Part Number</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                        <h6 class="fw-semibold mb-0">Date</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Email</h6>
+                                        <h6 class="fw-semibold mb-0">Picker</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Permissions</h6>
+                                        <h6 class="fw-semibold mb-0">Part Number</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Created At</h6>
+                                        <h6 class="fw-semibold mb-0">Deskripsi</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Action</h6>
+                                        <h6 class="fw-semibold mb-0">Jumlah</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Satuan</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">BL.2020/IB-0901</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">2020-05-17 17:08:51</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">Ahmad Fahri</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">8995078803009</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">Hook</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">1</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">Set</h6>
+                                    </td>
+                                </tr>
+                                {{-- @forelse ($users as $user)
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
@@ -72,14 +98,14 @@
                                             </td>
                                         @endif
 
-                                    </tr>
-                                @empty
+                                    </tr> --}}
+                                {{-- @empty
                                     <tr>
                                         <td class="border-bottom-0 " colspan="4">
                                             <h6 class="fw-semibold mb-0">maaf, data users kosong.</h6>
                                         </td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
                             </tbody>
                         </table>
                     </div>

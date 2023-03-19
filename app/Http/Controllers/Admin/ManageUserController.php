@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ManageUserRequest;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ManageUserController extends Controller
 {
@@ -37,9 +40,20 @@ class ManageUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ManageUserRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        try {
+            DB::beginTransaction();
+            $data['password'] = Hash::make($data['password']);
+            User::create($data);
+            DB::commit();
+            return redirect()->route('manage-user.index')->with('success', 'create user successfully');
+        } catch (Exception $exception) {
+            DB::rollBack();
+            return redirect()->route('manage-user.index')->with('error', 'user failed to create');
+        }
     }
 
     /**
@@ -88,10 +102,16 @@ class ManageUserController extends Controller
             DB::beginTransaction();
             $delete_user = User::destroy($id);
             DB::commit();
-            return redirect()->route('manage-user.index')->with('success', 'data deleted successfully');
+
+            alert()->success('Title', 'Lorem Lorem Lorem');
+
+            return redirect()->route('manage-user.index');
         } catch (Exception $exception) {
             DB::rollBack();
-            return redirect()->route('manage-user.index')->with('error', "cant delete data user");
+
+            alert()->success('Title', 'Lorem Lorem Lorem');
+
+            return redirect()->route('manage-user.index');
         }
     }
 }

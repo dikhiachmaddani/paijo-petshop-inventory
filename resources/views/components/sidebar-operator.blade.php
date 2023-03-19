@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('/') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ asset('operator/master-data-barang') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -20,7 +20,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('/') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ asset('operator/barang-diterima') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -28,7 +28,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('/') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ asset('operator/barang-keluar') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -40,7 +40,7 @@
         <span class="hide-menu">Master Data</span>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('operator/master-category') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -48,7 +48,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('operator/master-brand') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -56,7 +56,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('operator/master-uom') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -68,7 +68,7 @@
         <span class="hide-menu">Report</span>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('report/stok') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -76,7 +76,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('report/terima-barang') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -84,7 +84,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('master/category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ url('report/barang-keluar') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>

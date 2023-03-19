@@ -7,10 +7,10 @@
                 <div class="card-body p-4">
                     <div class="row mb-4">
                         <div class="col-6">
-                            <h5 class="card-title fw-semibold">Manage User</h5>
+                            <h5 class="card-title fw-semibold">Report Stok</h5>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="{{ route('manage-user.create') }}" class="btn btn-success ">create</a>
+                            <a href="" class="btn btn-success ">Print</a>
                         </div>
                     </div>
                     <div>
@@ -21,24 +21,44 @@
                                         <h6 class="fw-semibold mb-0">No</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                        <h6 class="fw-semibold mb-0">Part Number</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Email</h6>
+                                        <h6 class="fw-semibold mb-0">Description</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Permissions</h6>
+                                        <h6 class="fw-semibold mb-0">Kategori</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Created At</h6>
+                                        <h6 class="fw-semibold mb-0">Price</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Action</h6>
+                                        <h6 class="fw-semibold mb-0">Stok</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">1</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">22250788032</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">Makanan Kucing</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">Wiskas</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">USD 345.00</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">24 _Pcs</h6>
+                                    </td>
+                                </tr>
+                                {{-- @forelse ($users as $user)
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
@@ -72,14 +92,14 @@
                                             </td>
                                         @endif
 
-                                    </tr>
-                                @empty
+                                    </tr> --}}
+                                {{-- @empty
                                     <tr>
                                         <td class="border-bottom-0 " colspan="4">
                                             <h6 class="fw-semibold mb-0">maaf, data users kosong.</h6>
                                         </td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
                             </tbody>
                         </table>
                     </div>

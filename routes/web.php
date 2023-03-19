@@ -31,3 +31,37 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ["roles:admin,manager,ope
 Route::group(['prefix' => 'admin', 'middleware' => ["roles:admin"]], function () {
     Route::resource('/manage-user', ManageUserController::class);
 });
+
+Route::group(['prefix' => 'report', 'middleware' => ['roles:manager,operator']], function () {
+    // report
+    Route::get('/stok', function () {
+        return view('operator.report.stok.index');
+    });
+    Route::get('/terima-barang', function () {
+        return view('operator.report.stok.index');
+    });
+    Route::get('/barang-keluar', function () {
+        return view('operator.report.stok.index');
+    });
+});
+
+Route::group(['prefix' => 'operator', 'middleware' => ["roles:operator"]], function () {
+    Route::get('/master-data-barang', function () {
+        return view('operator.master-data-barang.index');
+    });
+    Route::get('/barang-diterima', function () {
+        return view('operator.barang-diterima.index');
+    });
+    Route::get('/barang-keluar', function () {
+        return view('operator.barang-keluar.index');
+    });
+    Route::get('/master-category', function () {
+        return view('operator.master-data-unit.category.index');
+    });
+    Route::get('/master-brand', function () {
+        return view('operator.master-data-unit.brand.index');
+    });
+    Route::get('/master-uom', function () {
+        return view('operator.master-data-unit.uom.index');
+    });
+});

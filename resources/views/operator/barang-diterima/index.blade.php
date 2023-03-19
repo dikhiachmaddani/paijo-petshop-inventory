@@ -7,10 +7,10 @@
                 <div class="card-body p-4">
                     <div class="row mb-4">
                         <div class="col-6">
-                            <h5 class="card-title fw-semibold">Manage User</h5>
+                            <h5 class="card-title fw-semibold">Barang Diterima</h5>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="{{ route('manage-user.create') }}" class="btn btn-success ">create</a>
+                            <a href="" class="btn btn-success ">Create</a>
                         </div>
                     </div>
                     <div>
@@ -21,16 +21,16 @@
                                         <h6 class="fw-semibold mb-0">No</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                        <h6 class="fw-semibold mb-0">Date Time</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Email</h6>
+                                        <h6 class="fw-semibold mb-0">No. Referensi</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Permissions</h6>
+                                        <h6 class="fw-semibold mb-0">Supplier</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Created At</h6>
+                                        <h6 class="fw-semibold mb-0">Remark</h6>
                                     </th>
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Action</h6>
@@ -38,7 +38,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">1</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">123124124</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-1">asdascasvsdvsv</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <p class="mb-0 fw-normal">sdvsdvsdv</p>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <p class="mb-0 fw-normal">asdasd</p>
+                                    </td>
+                                    <td class="border-bottom-0 d-flex gap-1">
+                                        <a href="" class="btn btn-success"><i class="ti ti-file"></i></a>
+                                    </td>
+                                </tr>
+                                {{-- @forelse ($users as $user)
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
@@ -72,14 +92,14 @@
                                             </td>
                                         @endif
 
-                                    </tr>
-                                @empty
+                                    </tr> --}}
+                                {{-- @empty
                                     <tr>
                                         <td class="border-bottom-0 " colspan="4">
                                             <h6 class="fw-semibold mb-0">maaf, data users kosong.</h6>
                                         </td>
                                     </tr>
-                                @endforelse
+                                @endforelse --}}
                             </tbody>
                         </table>
                     </div>
