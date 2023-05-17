@@ -3,6 +3,12 @@
 use App\Http\Controllers\Admin\ManageUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Master\BrandController;
+use App\Http\Controllers\Master\CategoryController;
+use App\Http\Controllers\Master\UomController;
+use App\Http\Controllers\Report\ReportBarangKeluarController;
+use App\Http\Controllers\Report\ReportStokController;
+use App\Http\Controllers\Report\ReportTerimaBarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +22,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', fn () => redirect()->route('dashboard'));
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/', function () {
-    return redirect()->route('dashboard');
-});
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ["roles:admin,manager,operator"]], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -33,35 +37,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ["roles:admin"]], function ()
 });
 
 Route::group(['prefix' => 'report', 'middleware' => ['roles:manager,operator']], function () {
-    // report
-    Route::get('/stok', function () {
-        return view('operator.report.stok.index');
-    });
-    Route::get('/terima-barang', function () {
-        return view('operator.report.stok.index');
-    });
-    Route::get('/barang-keluar', function () {
-        return view('operator.report.stok.index');
-    });
+    Route::get('/stok', [ReportStokController::class, 'index'])->name('report-stok.index');
+    Route::get('/terima-barang', [ReportTerimaBarangController::class, 'index'])->name('report-terima-barang.index');
+    Route::get('/barang-keluar', [ReportBarangKeluarController::class, 'index'])->name('report-barang-keluar.index');
 });
 
-Route::group(['prefix' => 'operator', 'middleware' => ["roles:operator"]], function () {
+Route::group(['prefix' => 'master', 'middleware' => ['roles:operator']], function () {
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/brand', BrandController::class);
+    Route::resource('/uom', UomController::class);
     Route::get('/master-data-barang', function () {
         return view('operator.master-data-barang.index');
-    });
-    Route::get('/barang-diterima', function () {
-        return view('operator.barang-diterima.index');
-    });
-    Route::get('/barang-keluar', function () {
-        return view('operator.barang-keluar.index');
-    });
-    Route::get('/master-category', function () {
-        return view('operator.master-data-unit.category.index');
-    });
-    Route::get('/master-brand', function () {
-        return view('operator.master-data-unit.brand.index');
-    });
-    Route::get('/master-uom', function () {
-        return view('operator.master-data-unit.uom.index');
     });
 });

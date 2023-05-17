@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Master;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ManageUserRequest;
-use App\Models\User;
+use App\Http\Requests\BrandRequest;
+use App\Models\Brand;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class ManageUserController extends Controller
+class BrandController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.manage-user.index', compact('users'));
+        $brand = Brand::all();
+        return view('all-roles.master-data-unit.brand.index', compact('brand'));
     }
 
     /**
@@ -31,7 +29,7 @@ class ManageUserController extends Controller
      */
     public function create()
     {
-        return view('admin.manage-user.create');
+        return view('all-roles.master-data-unit.brand.create');
     }
 
     /**
@@ -40,19 +38,18 @@ class ManageUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManageUserRequest $request)
+    public function store(BrandRequest $request)
     {
         $data = $request->validated();
 
         try {
             DB::beginTransaction();
-            $data['password'] = Hash::make($data['password']);
-            User::create($data);
+            Brand::create($data);
             DB::commit();
-            return redirect()->route('manage-user.index')->with('success', 'create user successfully');
+            return redirect()->route('brand.index')->with('success', 'create user successfully');
         } catch (Exception $exception) {
             DB::rollBack();
-            return redirect()->route('manage-user.index')->with('error', 'user failed to create');
+            return redirect()->route('brand.index')->with('error', 'user failed to create');
         }
     }
 
@@ -75,8 +72,8 @@ class ManageUserController extends Controller
      */
     public function edit($id)
     {
-        $data = User::find($id);
-        return view('admin.manage-user.edit', compact('data'));
+        $data = Brand::find($id);
+        return view('all-roles.master-data-unit.brand.edit', compact('data'));
     }
 
     /**
@@ -86,21 +83,15 @@ class ManageUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ManageUserRequest $request, $id)
+    public function update(BrandRequest $request, $id)
     {
-        $findUser = User::find($id);
+        $findData = Brand::find($id);
         $validating = $request->validated();
-        if($request->password != null){
-            $validating['password'] = Hash::make($request['password']);
-        }
-
-        $validating['password'] = $findUser->password;
-
-        $findUser->update($validating);
+        $findData->update($validating);
 
         alert()->success('Title', 'Lorem Lorem Lorem');
 
-        return redirect()->route('manage-user.index');
+        return redirect()->route('brand.index');
     }
 
     /**
@@ -113,18 +104,18 @@ class ManageUserController extends Controller
     {
         try {
             DB::beginTransaction();
-            $delete_user = User::destroy($id);
+            $delete = Brand::destroy($id);
             DB::commit();
 
             alert()->success('Title', 'Lorem Lorem Lorem');
 
-            return redirect()->route('manage-user.index');
+            return redirect()->route('brand.index');
         } catch (Exception $exception) {
             DB::rollBack();
 
             alert()->success('Title', 'Lorem Lorem Lorem');
 
-            return redirect()->route('manage-user.index');
+            return redirect()->route('brand.index');
         }
     }
 }

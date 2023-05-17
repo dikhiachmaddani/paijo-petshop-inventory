@@ -40,7 +40,7 @@
         <span class="hide-menu">Master Data</span>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('operator/master-category') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('category.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -48,7 +48,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('operator/master-brand') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('brand.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -56,7 +56,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('operator/master-uom') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('uom.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -68,7 +68,7 @@
         <span class="hide-menu">Report</span>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('report/stok') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('report-stok.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -76,7 +76,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('report/terima-barang') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('report-terima-barang.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -84,7 +84,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ url('report/barang-keluar') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('report-barang-keluar.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>

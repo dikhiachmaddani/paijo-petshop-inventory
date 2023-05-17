@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Master;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ManageUserRequest;
-use App\Models\User;
+use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class ManageUserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +18,8 @@ class ManageUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.manage-user.index', compact('users'));
+        $category = Category::all();
+        return view('all-roles.master-data-unit.category.index', compact('category'));
     }
 
     /**
@@ -31,7 +29,7 @@ class ManageUserController extends Controller
      */
     public function create()
     {
-        return view('admin.manage-user.create');
+        return view('all-roles.master-data-unit.category.create');
     }
 
     /**
@@ -40,19 +38,18 @@ class ManageUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManageUserRequest $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->validated();
 
         try {
             DB::beginTransaction();
-            $data['password'] = Hash::make($data['password']);
-            User::create($data);
+            Category::create($data);
             DB::commit();
-            return redirect()->route('manage-user.index')->with('success', 'create user successfully');
+            return redirect()->route('category.index')->with('success', 'create user successfully');
         } catch (Exception $exception) {
             DB::rollBack();
-            return redirect()->route('manage-user.index')->with('error', 'user failed to create');
+            return redirect()->route('category.index')->with('error', 'user failed to create');
         }
     }
 
@@ -75,8 +72,8 @@ class ManageUserController extends Controller
      */
     public function edit($id)
     {
-        $data = User::find($id);
-        return view('admin.manage-user.edit', compact('data'));
+        $data = Category::find($id);
+        return view('all-roles.master-data-unit.category.edit', compact('data'));
     }
 
     /**
@@ -86,21 +83,15 @@ class ManageUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ManageUserRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        $findUser = User::find($id);
+        $findData = Category::find($id);
         $validating = $request->validated();
-        if($request->password != null){
-            $validating['password'] = Hash::make($request['password']);
-        }
-
-        $validating['password'] = $findUser->password;
-
-        $findUser->update($validating);
+        $findData->update($validating);
 
         alert()->success('Title', 'Lorem Lorem Lorem');
 
-        return redirect()->route('manage-user.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -113,18 +104,18 @@ class ManageUserController extends Controller
     {
         try {
             DB::beginTransaction();
-            $delete_user = User::destroy($id);
+            $delete = Category::destroy($id);
             DB::commit();
 
             alert()->success('Title', 'Lorem Lorem Lorem');
 
-            return redirect()->route('manage-user.index');
+            return redirect()->route('category.index');
         } catch (Exception $exception) {
             DB::rollBack();
 
             alert()->success('Title', 'Lorem Lorem Lorem');
 
-            return redirect()->route('manage-user.index');
+            return redirect()->route('category.index');
         }
     }
 }

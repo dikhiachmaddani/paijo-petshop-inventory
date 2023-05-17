@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ManageUserRequest extends FormRequest
+class UomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,19 +26,15 @@ class ManageUserRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'name' => 'required|string',
-                        'email' => 'required|email|unique:users',
-                        'role' => 'required|in:operator,admin,manager',
-                        'password' => 'required|min:8',
+                        'unit' => 'required|string',
+                        'desc' => 'required|string',
                     ];
                 }
                 break;
             case 'PUT': {
                     return [
-                        'name' => 'required|string',
-                        'email' => 'required|email',
-                        'role' => 'required|in:operator,admin,manager',
-                        'password' => 'sometimes',
+                        'unit' => 'required|string',
+                        'desc' => 'required|string',
                     ];
                 }
                 break;
