@@ -10,24 +10,27 @@
                             <h5 class="card-title fw-semibold">Report Stok</h5>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="" class="btn btn-success ">Print</a>
+                            <a href="{{route('report-stok.export-excel')}}" class="btn btn-success ">Export</a>
                         </div>
                     </div>
                     <div>
-                        <table id="manage-user" class="table text-nowrap pt-2 mb-3 align-middle">
+                        <table class="table text-nowrap pt-2 mb-3 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">No</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Part Number</h6>
+                                        <h6 class="fw-semibold mb-0">Serial Number</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Description</h6>
+                                        <h6 class="fw-semibold mb-0">Nama Barang</h6>
                                     </th>
                                     <th class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">Kategori</h6>
+                                        <h6 class="fw-semibold mb-0">Nama Brand</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">UoM</h6>
                                     </th>
                                     <th class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">Price</h6>
@@ -38,68 +41,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">1</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1">22250788032</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1">Makanan Kucing</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1">Wiskas</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1">USD 345.00</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-1">24 _Pcs</h6>
-                                    </td>
-                                </tr>
-                                {{-- @forelse ($users as $user)
+                                @forelse ($data as $master_data)
                                     <tr>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1">{{ $user->name }}</h6>
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->serial_number }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <h6 class="fw-semibold mb-1">{{ $user->email }}</h6>
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->item_name }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">{{ $user->role }}</p>
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->brand->name_brand }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">{{ date_format($user->created_at, 'd M Y') }}</p>
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->uom->unit }}</h6>
                                         </td>
-                                        @if ($user->id === auth()->user()->id)
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">can't delete this one.</h6>
-                                            </td>
-                                        @else
-                                            <td class="border-bottom-0 d-flex gap-1">
-                                                <a href="{{ route('manage-user.edit', $user->id) }}"
-                                                    class="btn btn-warning"><i class="ti ti-edit"></i></a>
-                                                <form action="{{ route('manage-user.destroy', $user->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger show_confirm"><i
-                                                            class="ti ti-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        @endif
-
-                                    </tr> --}}
-                                {{-- @empty
-                                    <tr>
-                                        <td class="border-bottom-0 " colspan="4">
-                                            <h6 class="fw-semibold mb-0">maaf, data users kosong.</h6>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->price }}</h6>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">{{ $master_data->stock ." " . $master_data->category->name_category }}</h6>
                                         </td>
                                     </tr>
-                                @endforelse --}}
+                                @empty
+                                    <tr>
+                                        <td class="border-bottom-0 " colspan="4">
+                                            <h6 class="fw-semibold mb-0 text-center">maaf, data users kosong.</h6>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

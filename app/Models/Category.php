@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Category extends Model
 {
@@ -11,4 +12,9 @@ class Category extends Model
 
     protected $table = 'category';
     protected $guarded = ['id'];
+
+    public function masterDataBarang(): HasOne
+    {
+        return $this->hasOne(MasterDataBarang::class);
+    }
 }

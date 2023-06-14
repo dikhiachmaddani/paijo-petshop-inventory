@@ -126,8 +126,15 @@
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            $('.table').DataTable();
+            $('#table').DataTable();
+
         });
+
+        $(document).ready(function() {
+            $('#responsive').DataTable({
+                "scrollX": true
+            });
+        })
     </script>
     @yield('script')
 </body>

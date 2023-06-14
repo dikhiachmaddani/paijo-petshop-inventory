@@ -4,7 +4,7 @@
         <span class="hide-menu">Home</span>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('/dashboard') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('dashboard.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -12,7 +12,7 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('operator/master-data-barang') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('dashboard.master-data-barang.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
@@ -20,19 +20,19 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('operator/barang-diterima') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('dashboard.terima-barang.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
-            <span class="hide-menu">Barang Diterima</span>
+            <span class="hide-menu">Terima Barang</span>
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ asset('operator/barang-keluar') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('dashboard.keluar-barang.index') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
-            <span class="hide-menu">Barang Keluar</span>
+            <span class="hide-menu">Keluar Barang</span>
         </a>
     </li>
     <li class="nav-small-cap">

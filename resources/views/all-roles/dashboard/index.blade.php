@@ -9,7 +9,7 @@
                     <div class="row alig n-items-start">
                         <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold"> Barang </h5>
-                            <h4 class="fw-semibold mb-3">17</h4>
+                            <h4 class="fw-semibold mb-3">{{ $data_item }}</h4>
                         </div>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
@@ -30,7 +30,7 @@
                     <div class="row alig n-items-start">
                         <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold"> Zero Stock</h5>
-                            <h4 class="fw-semibold mb-3">10</h4>
+                            <h4 class="fw-semibold mb-3">{{$zero_stock}}</h4>
                         </div>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
@@ -51,7 +51,7 @@
                     <div class="row alig n-items-start">
                         <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold"> Max Stock </h5>
-                            <h4 class="fw-semibold mb-3">0</h4>
+                            <h4 class="fw-semibold mb-3">{{$max_stock}}</h4>
                         </div>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
@@ -72,7 +72,7 @@
                     <div class="row alig n-items-start">
                         <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold"> New Item </h5>
-                            <h4 class="fw-semibold mb-3">2</h4>
+                            <h4 class="fw-semibold mb-3">{{$new_item}}</h4>
                         </div>
                         <div class="col-4">
                             <div class="d-flex justify-content-end">
@@ -112,16 +112,7 @@
 @section('script')
     <script>
         var chart = {
-            series: [{
-                name: "dji sam soe",
-                data: [20]
-            }, {
-                name: "dji sam soe",
-                data: [100]
-            }, {
-                name: "de",
-                data: [444]
-            }, ],
+            series: @json($chart),
 
             chart: {
                 type: "bar",

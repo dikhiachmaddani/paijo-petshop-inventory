@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <div>
-                        <table id="manage-user" class="table text-nowrap pt-2 mb-3 align-middle">
+                        <table id="table" class="table text-nowrap pt-2 mb-3 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th class="border-bottom-0">
